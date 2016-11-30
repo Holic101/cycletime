@@ -2,8 +2,6 @@
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var Stopwatch = function () {
@@ -52,9 +50,10 @@ var Stopwatch = function () {
             //push every new lap into the cycle time array
             this.cycleTimes.push(times[0] * 60 + times[1] + times[2] / 100);
 
-            this.minCycleTime = Math.min.apply(Math, _toConsumableArray(this.cycleTimes)).toFixed(2);
-            this.maxCycleTime = Math.max.apply(Math, _toConsumableArray(this.cycleTimes)).toFixed(2);
-
+            /*
+            this.minCycleTime = Math.min(...this.cycleTimes).toFixed(2);
+            this.maxCycleTime = Math.max(...this.cycleTimes).toFixed(2);
+              */
             this.average = this.cycleTimes.reduce(function (a, b) {
                 return a + b;
             }, 0);
@@ -63,12 +62,12 @@ var Stopwatch = function () {
 
             //visualise the average
             var averageDisplay = document.querySelector(".average");
-            var minCycleTimeDisplay = document.querySelector(".min");
-            var maxCycleTimeDisplay = document.querySelector(".max");
+            /* let minCycleTimeDisplay = document.querySelector(".min");
+             let maxCycleTimeDisplay = document.querySelector(".max"); */
 
             averageDisplay.innerText = "Avg. Cycle Time: " + this.average + " after " + cycles + " cycles";
-            minCycleTimeDisplay.innerText = "Min. Cycle Time: " + this.minCycleTime;
-            maxCycleTimeDisplay.innerText = "Max. Cycle Time: " + this.maxCycleTime;
+            /* minCycleTimeDisplay.innerText = "Min. Cycle Time: " + this.minCycleTime;
+             maxCycleTimeDisplay.innerText = "Max. Cycle Time: " + this.maxCycleTime; */
         }
     }, {
         key: "stop",
@@ -143,18 +142,14 @@ var Stopwatch = function () {
             return file;
         }
     }, {
-        key: "download",
-        value: function download() {
-            this.finalVal = this.buildFile(this.average, this.cycleTimes);
-
-            var download = document.getElementById('download');
-            download.setAttribute('href', 'data:text/csv;charset=utf-8,' + encodeURIComponent(this.finalVal));
-            download.setAttribute('download', document.getElementById("fileName").value + ".txt");
-        }
-    }, {
         key: "sendMail",
         value: function sendMail() {
-            document.location.href = "mailto:" + document.getElementById("email").value + "?subject=cycleTime&body=" + encodeURIComponent(this.buildFile(this.average, this.cycleTimes));
+            var emailAddress = prompt("Please enter your email address.");
+            var emailSubject = prompt("Please enter the subject of your email.");
+            console.log("fire");
+            if (emailAddress != undefined) {
+                document.location.href = "mailto:" + emailAddress + "?subject=" + emailSubject + "&body=" + encodeURIComponent(this.buildFile(this.average, this.cycleTimes));
+            }
         }
     }]);
 

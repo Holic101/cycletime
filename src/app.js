@@ -38,10 +38,10 @@ class Stopwatch {
       //push every new lap into the cycle time array
         this.cycleTimes.push(times[0]*60+times[1]+times[2]/100);
         
-       
+      /*
       this.minCycleTime = Math.min(...this.cycleTimes).toFixed(2);
       this.maxCycleTime = Math.max(...this.cycleTimes).toFixed(2);
-     
+        */
       this.average = this.cycleTimes.reduce(function(a,b) {
           return a + b;
         }, 0);
@@ -50,12 +50,12 @@ class Stopwatch {
      
       //visualise the average
       let averageDisplay = document.querySelector(".average");
-      let minCycleTimeDisplay = document.querySelector(".min");
-      let maxCycleTimeDisplay = document.querySelector(".max");
+     /* let minCycleTimeDisplay = document.querySelector(".min");
+      let maxCycleTimeDisplay = document.querySelector(".max"); */
       
       averageDisplay.innerText = "Avg. Cycle Time: " + this.average + " after " + cycles + " cycles";
-      minCycleTimeDisplay.innerText = "Min. Cycle Time: " + this.minCycleTime;
-      maxCycleTimeDisplay.innerText = "Max. Cycle Time: " + this.maxCycleTime;
+     /* minCycleTimeDisplay.innerText = "Min. Cycle Time: " + this.minCycleTime;
+      maxCycleTimeDisplay.innerText = "Max. Cycle Time: " + this.maxCycleTime; */
     }
     
     stop() {
@@ -129,9 +129,10 @@ ${pad0(Math.floor(times[2]), 2)}`;
   {
     var emailAddress = prompt("Please enter your email address.");
     var emailSubject = prompt("Please enter the subject of your email.");
-   /* if (emailAddress != undefined) {
+    console.log("fire");
+   if (emailAddress != undefined) {
     document.location.href = "mailto:" + emailAddress + "?subject=" + emailSubject + "&body=" + encodeURIComponent(this.buildFile(this.average,this.cycleTimes));
-     } */
+     }
     }
 
 }
