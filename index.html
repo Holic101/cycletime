@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="app.css" type="text/css" />
+        <title>
+            Cycle Time Measurement
+        </title>        
+    </head>
+    <body>
+        <nav class="controls">
+			<a href="#" class="button" onClick="stopwatch.start();">Start</a>
+			<a href="#" class="button" onClick="stopwatch.stop();">Stop</a>
+			<a href="#" class="button" onClick="stopwatch.restart(); stopwatch.clear();">Restart</a>
+              <a href="#" class="button" onClick="stopwatch.sendMail();">E-Mail</a>
+		</nav>
+    <div class="stats">
+    <p class="average"><p>
+    <p class="min"><p>
+    <p class="max"><p>
+    </div>
+		<div class="stopwatch" onClick="stopwatch.lap();">
+    </div>
+    <div class="input">
+     <label for="email">Email Address</label>
+     <input type="text" id="email"></input>
+    </div>
+		<ul class="results"></ul>
+       <script type="text/javascript" src="dist/app.js"></script>
+    </body>
+</html>
+
