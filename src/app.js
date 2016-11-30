@@ -125,21 +125,16 @@ ${pad0(Math.floor(times[2]), 2)}`;
     return file;
   }
   
-  download() {
-   this.finalVal = this.buildFile(this.average, this.cycleTimes);
-
-  var download = document.getElementById('download');
-    download.setAttribute('href', 'data:text/csv;charset=utf-8,'  + encodeURIComponent(this.finalVal));
-    download.setAttribute('download', document.getElementById("fileName").value + ".txt");
-  }
-  
-  
   sendMail()
   {
-    document.location.href = "mailto:" + document.getElementById("email").value + "?subject=cycleTime&body=" + encodeURIComponent(this.buildFile(this.average,this.cycleTimes));
-  }
-}
+    var emailAddress = prompt("Please enter your email address.");
+    var emailSubject = prompt("Please enter the subject of your email.");
+   /* if (emailAddress != undefined) {
+    document.location.href = "mailto:" + emailAddress + "?subject=" + emailSubject + "&body=" + encodeURIComponent(this.buildFile(this.average,this.cycleTimes));
+     } */
+    }
 
+}
 function pad0(value, count) {
     var result = value.toString();
     for (; result.length < count; --count)

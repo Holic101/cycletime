@@ -1,6 +1,9 @@
-<html>
+<!doctype html>
+<html lang="en">
     <head>
-        <link rel="stylesheet" href="app.css" type="text/css" />
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/app.css" type="text/css" />
         <title>
             Cycle Time Measurement
         </title>        
@@ -10,19 +13,20 @@
 			<a href="#" class="button" onClick="stopwatch.start();">Start</a>
 			<a href="#" class="button" onClick="stopwatch.stop();">Stop</a>
 			<a href="#" class="button" onClick="stopwatch.restart(); stopwatch.clear();">Restart</a>
-              <a href="#" class="button" onClick="stopwatch.sendMail();">E-Mail</a>
-		</nav>
-    <div class="stats">
-    <p class="average"><p>
-    <p class="min"><p>
-    <p class="max"><p>
-    </div>
-		<div class="stopwatch" onClick="stopwatch.lap();">
-    </div>
-    <div class="input">
+            <a href="#" class="button" onClick="stopwatch.sendMail();">E-Mail</a>
+              <div class="input">
      <label for="email">Email Address</label>
      <input type="text" id="email"></input>
     </div>
+		</nav>
+    <div class="stats">
+     <p class="average"><p>
+     <p class="min"><p>
+     <p class="max"><p>
+    </div>
+	<div class="stopwatch" onClick="stopwatch.lap();">
+    </div>
+  
 		<ul class="results"></ul>
        <script type="text/javascript" src="dist/app.js"></script>
     </body>
