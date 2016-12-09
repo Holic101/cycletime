@@ -17,8 +17,7 @@ var Stopwatch = function () {
         this.reset();
         this.print(this.times);
         this.average = "";
-        this.minCycleTime = "";
-        this.maxCycleTime = "";
+        this.totalTime = "";
         this.finalVal = '';
     }
 
@@ -54,19 +53,21 @@ var Stopwatch = function () {
             this.minCycleTime = Math.min(...this.cycleTimes).toFixed(2);
             this.maxCycleTime = Math.max(...this.cycleTimes).toFixed(2);
               */
-            this.average = this.cycleTimes.reduce(function (a, b) {
+            this.totalTime = this.cycleTimes.reduce(function (a, b) {
                 return a + b;
             }, 0);
             var cycles = document.getElementsByTagName("li").length;
-            this.average = (this.average / cycles).toFixed(2);
+            this.average = (this.totalTime / cycles).toFixed(2);
 
             //visualise the average
             var averageDisplay = document.querySelector(".average");
-            /* let minCycleTimeDisplay = document.querySelector(".min");
+            var totalTimeDisplay = document.querySelector(".total");
+            /*
              let maxCycleTimeDisplay = document.querySelector(".max"); */
 
             averageDisplay.innerText = "Avg. Cycle Time: " + this.average + " after " + cycles + " cycles";
-            /* minCycleTimeDisplay.innerText = "Min. Cycle Time: " + this.minCycleTime;
+            totalTimeDisplay.innerText = "Total Time: " + this.totalTime;
+            /*
              maxCycleTimeDisplay.innerText = "Max. Cycle Time: " + this.maxCycleTime; */
         }
     }, {
@@ -146,9 +147,9 @@ var Stopwatch = function () {
         value: function sendMail() {
             var emailAddress = prompt("Please enter your email address.");
             var emailSubject = prompt("Please enter the subject of your email.");
-            console.log("fire");
+
             if (emailAddress != undefined) {
-                document.location.href = "mailto:" + emailAddress + "?subject=" + emailSubject + "&body=" + encodeURIComponent(this.buildFile(this.average, this.cycleTimes));
+                document.location.href = "mailto:" + emailAddress + "?subject=" + emailSubject + "&body=" + encodeURIComponent(this.buildFile(this.totalTime, this.average, this.cycleTimes));
             }
         }
     }]);
