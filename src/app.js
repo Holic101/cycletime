@@ -43,7 +43,7 @@ class Stopwatch {
         */
       this.totalTime = this.cycleTimes.reduce(function(a,b) {
           return a + b;
-        }, 0);
+        }, 0).toFixed(2);
       let cycles = document.getElementsByTagName("li").length;
         this.average = (this.totalTime/cycles).toFixed(2);
      
@@ -116,8 +116,8 @@ ${pad0(times[1], 2)}:\
 ${pad0(Math.floor(times[2]), 2)}`;
     }
   
-  buildFile(avg, times) {
-    var file = avg + "\n";
+  buildFile(total, avg, times) {
+    var file = total + "\n" + avg + "\n";
     for (var i = 0; i < times.length; i++) {
     file += times[i].toFixed(2) + "\n";
    }
