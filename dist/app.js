@@ -67,7 +67,7 @@ var Stopwatch = function () {
              let maxCycleTimeDisplay = document.querySelector(".max"); */
 
             averageDisplay.innerText = "Avg. Cycle Time: " + this.average + " after " + cycles + " cycles";
-            totalTimeDisplay.innerText = "Total Time: " + this.totalTime.toFixed(2);
+            totalTimeDisplay.innerText = "Total Time: " + this.totalTime;
             /*
              maxCycleTimeDisplay.innerText = "Max. Cycle Time: " + this.maxCycleTime; */
         }
