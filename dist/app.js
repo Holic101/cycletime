@@ -55,7 +55,8 @@ var Stopwatch = function () {
               */
             this.totalTime = this.cycleTimes.reduce(function (a, b) {
                 return a + b;
-            }, 0);
+            }, 0).toFixed(2);
+            console.log(this.totalTime);
             var cycles = document.getElementsByTagName("li").length;
             this.average = (this.totalTime / cycles).toFixed(2);
 
@@ -66,7 +67,7 @@ var Stopwatch = function () {
              let maxCycleTimeDisplay = document.querySelector(".max"); */
 
             averageDisplay.innerText = "Avg. Cycle Time: " + this.average + " after " + cycles + " cycles";
-            totalTimeDisplay.innerText = "Total Time: " + this.totalTime;
+            totalTimeDisplay.innerText = "Total Time: " + this.totalTime.toFixed(2);
             /*
              maxCycleTimeDisplay.innerText = "Max. Cycle Time: " + this.maxCycleTime; */
         }
@@ -133,8 +134,9 @@ var Stopwatch = function () {
         }
     }, {
         key: "buildFile",
-        value: function buildFile(avg, times) {
-            var file = avg + "\n";
+        value: function buildFile(total, avg, times) {
+            var file = total + "\n";
+            file += avg + "\n";
             for (var i = 0; i < times.length; i++) {
                 file += times[i].toFixed(2) + "\n";
             }

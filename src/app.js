@@ -44,6 +44,7 @@ class Stopwatch {
       this.totalTime = this.cycleTimes.reduce(function(a,b) {
           return a + b;
         }, 0).toFixed(2);
+        console.log(this.totalTime);
       let cycles = document.getElementsByTagName("li").length;
         this.average = (this.totalTime/cycles).toFixed(2);
      
@@ -54,7 +55,7 @@ class Stopwatch {
       let maxCycleTimeDisplay = document.querySelector(".max"); */
       
       averageDisplay.innerText = "Avg. Cycle Time: " + this.average + " after " + cycles + " cycles";
-     totalTimeDisplay.innerText = "Total Time: " + this.totalTime;
+     totalTimeDisplay.innerText = "Total Time: " + this.totalTime.toFixed(2);
      /*
       maxCycleTimeDisplay.innerText = "Max. Cycle Time: " + this.maxCycleTime; */
     }
@@ -117,7 +118,8 @@ ${pad0(Math.floor(times[2]), 2)}`;
     }
   
   buildFile(total, avg, times) {
-    var file = total + "\n" + avg + "\n";
+    var file = total + "\n"; 
+    file += avg + "\n";
     for (var i = 0; i < times.length; i++) {
     file += times[i].toFixed(2) + "\n";
    }
@@ -132,7 +134,7 @@ ${pad0(Math.floor(times[2]), 2)}`;
     var emailSubject = prompt("Please enter the subject of your email.");
    
    if (emailAddress != undefined) {
-    document.location.href = "mailto:" + emailAddress + "?subject=" + emailSubject + "&body=" + encodeURIComponent(this.buildFile(this.totalTime, this.average,this.cycleTimes));
+    document.location.href = "mailto:" + emailAddress + "?subject=" + emailSubject + "&body=" + encodeURIComponent(this.buildFile(this.totalTime,this.average,this.cycleTimes));
      }
     }
 
